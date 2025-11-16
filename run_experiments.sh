@@ -3,6 +3,7 @@
 # Runs all 4 models (baseline + 3 dual-stream) with LOSO cross-validation on A100
 
 set -e  # Exit on error
+set -o pipefail
 
 echo "========================================================================"
 echo "DUAL-STREAM ARCHITECTURE COMPARISON - LOSO CROSS-VALIDATION"
@@ -151,12 +152,58 @@ eval $CMD
 
 echo ""
 echo "========================================================================"
-echo "EXPERIMENTS COMPLETED!"
+echo "Running IMU Comparison: TransModel vs 8ch vs 8ch+DTW..."
 echo "========================================================================"
 echo ""
-echo "Results saved in: $WORK_DIR"
+
+# Generate timestamp in new format: 05am-11-16-2025
+TIMESTAMP=$(date +"%I%p-%m-%d-%Y" | tr '[:upper:]' '[:lower:]')
+echo "Timestamp: $TIMESTAMP"
 echo ""
-echo "To analyze results, run:"
-echo "  python analyze_dualstream_results.py --work-dir <work_dir_timestamp>"
+
+# Run unified IMU comparison script
+python run_imu_comparison.py \
+    --device $DEVICE \
+    --num-epochs $NUM_EPOCHS \
+    --batch-size $BATCH_SIZE \
+    --base-work-dir work_dir
+
+echo ""
+echo "========================================================================"
+echo "Running Filtering and Quality Assessment Experiments..."
+echo "========================================================================"
+echo ""
+echo "This section tests 6 configurations:"
+echo "  1. Baseline: TransModel (acc-only, no filtering)"
+echo "  2. IMU Acc-only + Motion Filter"
+echo "  3. IMU Raw Acc+Gyro (no quality filter)"
+echo "  4. IMU Acc+Gyro + Hard Quality Filter"
+echo "  5. IMU Acc+Gyro + Adaptive Fallback"
+echo "  6. IMU Acc+Orientation + Madgwick Fusion"
+echo ""
+
+# Run filtering experiments
+bash run_filtering.sh --device $DEVICE --epochs $NUM_EPOCHS
+
+echo ""
+echo "========================================================================"
+echo "ALL EXPERIMENTS COMPLETED!"
+echo "========================================================================"
+echo ""
+echo "Results saved in:"
+echo "  - Dual-stream comparison: work_dir/$TIMESTAMP/"
+echo "  - Filtering experiments: work_dir/filtering_*/"
+echo ""
+echo "Dual-stream comparison files:"
+echo "  - Summary: work_dir/$TIMESTAMP/comparison/model_comparison_summary.csv"
+echo "  - Per-fold: work_dir/$TIMESTAMP/comparison/all_models_per_fold.csv"
+echo ""
+echo "Individual model results:"
+echo "  - TransModel (Acc-only):    work_dir/$TIMESTAMP/TransModel_AccOnly_4ch/"
+echo "  - IMU 8-channel (no DTW):   work_dir/$TIMESTAMP/IMU_8channel/"
+echo "  - IMU 8-channel (with DTW): work_dir/$TIMESTAMP/IMU_8channel_DTW/"
+echo ""
+echo "Filtering experiment results:"
+echo "  - Check: work_dir/filtering_*/experiment_summary.txt"
 echo ""
 echo "========================================================================"

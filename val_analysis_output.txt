@@ -1,0 +1,151 @@
+================================================================================
+FINDING OPTIMAL VALIDATION SUBJECTS
+================================================================================
+Target: 60% ± 5% ADLs
+Analyzing 30 subjects for BOTH acc-only and acc+gyro configs...
+
+Analyzing accelerometer-only configuration:
+  Subject 29... ✓ (85 windows, 70.6% ADLs)
+  Subject 30... ✓ (86 windows, 51.2% ADLs)
+  Subject 31... ✓ (87 windows, 74.7% ADLs)
+  Subject 32... ✓ (78 windows, 70.5% ADLs)
+  Subject 34... ✓ (36 windows, 41.7% ADLs)
+  Subject 35... ✓ (84 windows, 59.5% ADLs)
+  Subject 36... ✓ (42 windows, 61.9% ADLs)
+  Subject 37... ✓ (97 windows, 48.5% ADLs)
+  Subject 38... ✓ (140 windows, 58.6% ADLs)
+  Subject 39... ✓ (107 windows, 67.3% ADLs)
+  Subject 43... ✓ (75 windows, 44.0% ADLs)
+  Subject 44... ✓ (209 windows, 61.2% ADLs)
+  Subject 45... ✓ (72 windows, 4.2% ADLs)
+  Subject 46... ✓ (196 windows, 70.4% ADLs)
+  Subject 48... ✓ (139 windows, 52.5% ADLs)
+  Subject 49... ✓ (128 windows, 64.8% ADLs)
+  Subject 50... ✓ (114 windows, 57.0% ADLs)
+  Subject 51... ✓ (65 windows, 67.7% ADLs)
+  Subject 52... ✓ (137 windows, 62.0% ADLs)
+  Subject 53... ✓ (83 windows, 61.4% ADLs)
+  Subject 54... ✓ (112 windows, 63.4% ADLs)
+  Subject 55... ✓ (145 windows, 48.3% ADLs)
+  Subject 56... ✓ (126 windows, 44.4% ADLs)
+  Subject 57... ✓ (140 windows, 56.4% ADLs)
+  Subject 58... ✓ (108 windows, 54.6% ADLs)
+  Subject 59... ✓ (38 windows, 0.0% ADLs)
+  Subject 60... ✓ (97 windows, 68.0% ADLs)
+  Subject 61... ✓ (76 windows, 55.3% ADLs)
+  Subject 62... ✓ (113 windows, 41.6% ADLs)
+  Subject 63... ✓ (146 windows, 46.6% ADLs)
+
+Analyzing accelerometer + gyroscope configuration:
+  Subject 29... ✓ (3 windows, 100.0% ADLs)
+  Subject 30... ✓ (36 windows, 33.3% ADLs)
+  Subject 31... ✓ (21 windows, 85.7% ADLs)
+  Subject 32... ✓ (0 windows, 0.0% ADLs)
+  Subject 34... ✓ (24 windows, 37.5% ADLs)
+  Subject 35... ✓ (3 windows, 0.0% ADLs)
+  Subject 36... ✓ (12 windows, 25.0% ADLs)
+  Subject 37... ✓ (21 windows, 85.7% ADLs)
+  Subject 38... ✓ (60 windows, 60.0% ADLs)
+  Subject 39... ✓ (51 windows, 76.5% ADLs)
+  Subject 43... ✓ (57 windows, 52.6% ADLs)
+  Subject 44... ✓ (186 windows, 59.7% ADLs)
+  Subject 45... ✓ (69 windows, 4.3% ADLs)
+  Subject 46... ✓ (156 windows, 78.8% ADLs)
+  Subject 48... ✓ (81 windows, 48.1% ADLs)
+  Subject 49... ✓ (64 windows, 60.9% ADLs)
+  Subject 50... ✓ (54 windows, 72.2% ADLs)
+  Subject 51... ✓ (20 windows, 70.0% ADLs)
+  Subject 52... ✓ (90 windows, 68.9% ADLs)
+  Subject 53... ✓ (44 windows, 50.0% ADLs)
+  Subject 54... ✓ (62 windows, 72.6% ADLs)
+  Subject 55... ✓ (85 windows, 41.2% ADLs)
+  Subject 56... ✓ (107 windows, 39.3% ADLs)
+  Subject 57... ✓ (98 windows, 45.9% ADLs)
+  Subject 58... ✓ (56 windows, 44.6% ADLs)
+  Subject 59... ✓ (28 windows, 0.0% ADLs)
+  Subject 60... ✓ (54 windows, 72.2% ADLs)
+  Subject 61... ✓ (32 windows, 50.0% ADLs)
+  Subject 62... ✓ (85 windows, 36.5% ADLs)
+  Subject 63... ✓ (86 windows, 46.5% ADLs)
+
+================================================================================
+FINDING COMPATIBLE PAIRS
+================================================================================
+
+Found 35 compatible pairs!
+
+================================================================================
+TOP 10 RECOMMENDATIONS (work for BOTH acc-only and acc+gyro)
+================================================================================
+
+1. Subjects [38, 44]:
+   Acc-only:  139 falls + 210 ADLs = 349 windows (60.2% ADLs)
+   Acc+gyro:  99 falls + 147 ADLs = 246 windows (59.8% ADLs)
+   Max deviation from 60%: 0.2%
+   Average ADL ratio: 60.0%
+
+2. Subjects [54, 58]:
+   Acc-only:  90 falls + 130 ADLs = 220 windows (59.1% ADLs)
+   Acc+gyro:  48 falls + 70 ADLs = 118 windows (59.3% ADLs)
+   Max deviation from 60%: 0.9%
+   Average ADL ratio: 59.2%
+
+3. Subjects [39, 58]:
+   Acc-only:  84 falls + 131 ADLs = 215 windows (60.9% ADLs)
+   Acc+gyro:  43 falls + 64 ADLs = 107 windows (59.8% ADLs)
+   Max deviation from 60%: 0.9%
+   Average ADL ratio: 60.4%
+
+4. Subjects [39, 48]:
+   Acc-only:  101 falls + 145 ADLs = 246 windows (58.9% ADLs)
+   Acc+gyro:  54 falls + 78 ADLs = 132 windows (59.1% ADLs)
+   Max deviation from 60%: 1.1%
+   Average ADL ratio: 59.0%
+
+5. Subjects [52, 58]:
+   Acc-only:  101 falls + 144 ADLs = 245 windows (58.8% ADLs)
+   Acc+gyro:  59 falls + 87 ADLs = 146 windows (59.6% ADLs)
+   Max deviation from 60%: 1.2%
+   Average ADL ratio: 59.2%
+
+6. Subjects [38, 49]:
+   Acc-only:  103 falls + 165 ADLs = 268 windows (61.6% ADLs)
+   Acc+gyro:  49 falls + 75 ADLs = 124 windows (60.5% ADLs)
+   Max deviation from 60%: 1.6%
+   Average ADL ratio: 61.0%
+
+7. Subjects [58, 60]:
+   Acc-only:  80 falls + 125 ADLs = 205 windows (61.0% ADLs)
+   Acc+gyro:  46 falls + 64 ADLs = 110 windows (58.2% ADLs)
+   Max deviation from 60%: 1.8%
+   Average ADL ratio: 59.6%
+
+8. Subjects [48, 60]:
+   Acc-only:  97 falls + 139 ADLs = 236 windows (58.9% ADLs)
+   Acc+gyro:  57 falls + 78 ADLs = 135 windows (57.8% ADLs)
+   Max deviation from 60%: 2.2%
+   Average ADL ratio: 58.3%
+
+9. Subjects [43, 60]:
+   Acc-only:  73 falls + 99 ADLs = 172 windows (57.6% ADLs)
+   Acc+gyro:  42 falls + 69 ADLs = 111 windows (62.2% ADLs)
+   Max deviation from 60%: 2.4%
+   Average ADL ratio: 59.9%
+
+10. Subjects [44, 50]:
+   Acc-only:  130 falls + 193 ADLs = 323 windows (59.8% ADLs)
+   Acc+gyro:  90 falls + 150 ADLs = 240 windows (62.5% ADLs)
+   Max deviation from 60%: 2.5%
+   Average ADL ratio: 61.1%
+
+================================================================================
+✓ RECOMMENDED VALIDATION SUBJECTS:
+================================================================================
+  [38, 44]
+  - Acc-only:  60.2% ADLs (349 windows)
+  - Acc+gyro:  59.8% ADLs (246 windows)
+  - Deviation: ±0.2%
+================================================================================
+
+✓ Saved top 20 recommendations to: optimal_validation_subjects.csv
+

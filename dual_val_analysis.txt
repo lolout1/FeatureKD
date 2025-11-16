@@ -1,0 +1,210 @@
+================================================================================
+DUAL VALIDATION SPLIT ANALYSIS
+================================================================================
+
+Finding validation subjects that work for:
+  1. Non-motion-filtering (target: ~60% ADLs)
+  2. Motion-filtering (target: ~45-50% ADLs minimum)
+
+This will take a few minutes...
+
+================================================================================
+Analyzing: acc_only_no_filter
+================================================================================
+  Subject 29... ✓ (85 windows, 70.6% ADLs)
+  Subject 30... ✓ (86 windows, 51.2% ADLs)
+  Subject 31... ✓ (87 windows, 74.7% ADLs)
+  Subject 32... ✓ (78 windows, 70.5% ADLs)
+  Subject 34... ✓ (36 windows, 41.7% ADLs)
+  Subject 35... ✓ (84 windows, 59.5% ADLs)
+  Subject 36... ✓ (42 windows, 61.9% ADLs)
+  Subject 37... ✓ (97 windows, 48.5% ADLs)
+  Subject 38... ✓ (140 windows, 58.6% ADLs)
+  Subject 39... ✓ (107 windows, 67.3% ADLs)
+  Subject 43... ✓ (75 windows, 44.0% ADLs)
+  Subject 44... ✓ (209 windows, 61.2% ADLs)
+  Subject 45... ✓ (72 windows, 4.2% ADLs)
+  Subject 46... ✓ (196 windows, 70.4% ADLs)
+  Subject 48... ✓ (139 windows, 52.5% ADLs)
+  Subject 49... ✓ (128 windows, 64.8% ADLs)
+  Subject 50... ✓ (114 windows, 57.0% ADLs)
+  Subject 51... ✓ (65 windows, 67.7% ADLs)
+  Subject 52... ✓ (137 windows, 62.0% ADLs)
+  Subject 53... ✓ (83 windows, 61.4% ADLs)
+  Subject 54... ✓ (112 windows, 63.4% ADLs)
+  Subject 55... ✓ (145 windows, 48.3% ADLs)
+  Subject 56... ✓ (126 windows, 44.4% ADLs)
+  Subject 57... ✓ (140 windows, 56.4% ADLs)
+  Subject 58... ✓ (108 windows, 54.6% ADLs)
+  Subject 59... ✓ (38 windows, 0.0% ADLs)
+  Subject 60... ✓ (97 windows, 68.0% ADLs)
+  Subject 61... ✓ (76 windows, 55.3% ADLs)
+  Subject 62... ✓ (113 windows, 41.6% ADLs)
+  Subject 63... ✓ (146 windows, 46.6% ADLs)
+
+================================================================================
+Analyzing: acc_only_motion_filter
+================================================================================
+  Subject 29... ✓ (85 windows, 70.6% ADLs)
+  Subject 30... ✓ (86 windows, 51.2% ADLs)
+  Subject 31... ✓ (87 windows, 74.7% ADLs)
+  Subject 32... ✓ (78 windows, 70.5% ADLs)
+  Subject 34... ✓ (36 windows, 41.7% ADLs)
+  Subject 35... ✓ (84 windows, 59.5% ADLs)
+  Subject 36... ✓ (42 windows, 61.9% ADLs)
+  Subject 37... ✓ (97 windows, 48.5% ADLs)
+  Subject 38... ✓ (140 windows, 58.6% ADLs)
+  Subject 39... ✓ (107 windows, 67.3% ADLs)
+  Subject 43... ✓ (75 windows, 44.0% ADLs)
+  Subject 44... ✓ (209 windows, 61.2% ADLs)
+  Subject 45... ✓ (72 windows, 4.2% ADLs)
+  Subject 46... ✓ (196 windows, 70.4% ADLs)
+  Subject 48... ✓ (139 windows, 52.5% ADLs)
+  Subject 49... ✓ (128 windows, 64.8% ADLs)
+  Subject 50... ✓ (114 windows, 57.0% ADLs)
+  Subject 51... ✓ (65 windows, 67.7% ADLs)
+  Subject 52... ✓ (137 windows, 62.0% ADLs)
+  Subject 53... ✓ (83 windows, 61.4% ADLs)
+  Subject 54... ✓ (112 windows, 63.4% ADLs)
+  Subject 55... ✓ (145 windows, 48.3% ADLs)
+  Subject 56... ✓ (126 windows, 44.4% ADLs)
+  Subject 57... ✓ (140 windows, 56.4% ADLs)
+  Subject 58... ✓ (108 windows, 54.6% ADLs)
+  Subject 59... ✓ (38 windows, 0.0% ADLs)
+  Subject 60... ✓ (97 windows, 68.0% ADLs)
+  Subject 61... ✓ (76 windows, 55.3% ADLs)
+  Subject 62... ✓ (113 windows, 41.6% ADLs)
+  Subject 63... ✓ (146 windows, 46.6% ADLs)
+
+================================================================================
+Analyzing: acc_gyro_no_filter
+================================================================================
+  Subject 29... ✓ (3 windows, 100.0% ADLs)
+  Subject 30... ✓ (36 windows, 33.3% ADLs)
+  Subject 31... ✓ (21 windows, 85.7% ADLs)
+  Subject 32... ✓ (0 windows, 0.0% ADLs)
+  Subject 34... ✓ (24 windows, 37.5% ADLs)
+  Subject 35... ✓ (3 windows, 0.0% ADLs)
+  Subject 36... ✓ (12 windows, 25.0% ADLs)
+  Subject 37... ✓ (21 windows, 85.7% ADLs)
+  Subject 38... ✓ (60 windows, 60.0% ADLs)
+  Subject 39... ✓ (51 windows, 76.5% ADLs)
+  Subject 43... ✓ (57 windows, 52.6% ADLs)
+  Subject 44... ✓ (186 windows, 59.7% ADLs)
+  Subject 45... ✓ (69 windows, 4.3% ADLs)
+  Subject 46... ✓ (156 windows, 78.8% ADLs)
+  Subject 48... ✓ (81 windows, 48.1% ADLs)
+  Subject 49... ✓ (64 windows, 60.9% ADLs)
+  Subject 50... ✓ (54 windows, 72.2% ADLs)
+  Subject 51... ✓ (20 windows, 70.0% ADLs)
+  Subject 52... ✓ (90 windows, 68.9% ADLs)
+  Subject 53... ✓ (44 windows, 50.0% ADLs)
+  Subject 54... ✓ (62 windows, 72.6% ADLs)
+  Subject 55... ✓ (85 windows, 41.2% ADLs)
+  Subject 56... ✓ (107 windows, 39.3% ADLs)
+  Subject 57... ✓ (98 windows, 45.9% ADLs)
+  Subject 58... ✓ (56 windows, 44.6% ADLs)
+  Subject 59... ✓ (28 windows, 0.0% ADLs)
+  Subject 60... ✓ (54 windows, 72.2% ADLs)
+  Subject 61... ✓ (32 windows, 50.0% ADLs)
+  Subject 62... ✓ (85 windows, 36.5% ADLs)
+  Subject 63... ✓ (86 windows, 46.5% ADLs)
+
+================================================================================
+Analyzing: acc_gyro_motion_filter
+================================================================================
+  Subject 29... ✓ (3 windows, 100.0% ADLs)
+  Subject 30... ✓ (36 windows, 33.3% ADLs)
+  Subject 31... ✓ (21 windows, 85.7% ADLs)
+  Subject 32... ✓ (0 windows, 0.0% ADLs)
+  Subject 34... ✓ (24 windows, 37.5% ADLs)
+  Subject 35... ✓ (3 windows, 0.0% ADLs)
+  Subject 36... ✓ (12 windows, 25.0% ADLs)
+  Subject 37... ✓ (21 windows, 85.7% ADLs)
+  Subject 38... ✓ (60 windows, 60.0% ADLs)
+  Subject 39... ✓ (51 windows, 76.5% ADLs)
+  Subject 43... ✓ (57 windows, 52.6% ADLs)
+  Subject 44... ✓ (186 windows, 59.7% ADLs)
+  Subject 45... ✓ (69 windows, 4.3% ADLs)
+  Subject 46... ✓ (156 windows, 78.8% ADLs)
+  Subject 48... ✓ (81 windows, 48.1% ADLs)
+  Subject 49... ✓ (64 windows, 60.9% ADLs)
+  Subject 50... ✓ (54 windows, 72.2% ADLs)
+  Subject 51... ✓ (20 windows, 70.0% ADLs)
+  Subject 52... ✓ (90 windows, 68.9% ADLs)
+  Subject 53... ✓ (44 windows, 50.0% ADLs)
+  Subject 54... ✓ (62 windows, 72.6% ADLs)
+  Subject 55... ✓ (85 windows, 41.2% ADLs)
+  Subject 56... ✓ (107 windows, 39.3% ADLs)
+  Subject 57... ✓ (98 windows, 45.9% ADLs)
+  Subject 58... ✓ (56 windows, 44.6% ADLs)
+  Subject 59... ✓ (28 windows, 0.0% ADLs)
+  Subject 60... ✓ (54 windows, 72.2% ADLs)
+  Subject 61... ✓ (32 windows, 50.0% ADLs)
+  Subject 62... ✓ (85 windows, 36.5% ADLs)
+  Subject 63... ✓ (86 windows, 46.5% ADLs)
+
+================================================================================
+FINDING CROSS-CONFIG COMPATIBLE PAIRS
+================================================================================
+
+================================================================================
+RESULTS
+================================================================================
+
+❌ NO COMPATIBLE PAIRS FOUND
+Try widening tolerance or lowering min_windows requirement.
+
+acc_only_no_filter:
+  Top subjects by ADL ratio:
+    Subject 30:  86 windows, 51.2% ADLs
+    Subject 37:  97 windows, 48.5% ADLs
+    Subject 55: 145 windows, 48.3% ADLs
+    Subject 48: 139 windows, 52.5% ADLs
+    Subject 63: 146 windows, 46.6% ADLs
+    Subject 58: 108 windows, 54.6% ADLs
+    Subject 61:  76 windows, 55.3% ADLs
+    Subject 56: 126 windows, 44.4% ADLs
+    Subject 43:  75 windows, 44.0% ADLs
+    Subject 57: 140 windows, 56.4% ADLs
+
+acc_only_motion_filter:
+  Top subjects by ADL ratio:
+    Subject 30:  86 windows, 51.2% ADLs
+    Subject 37:  97 windows, 48.5% ADLs
+    Subject 55: 145 windows, 48.3% ADLs
+    Subject 48: 139 windows, 52.5% ADLs
+    Subject 63: 146 windows, 46.6% ADLs
+    Subject 58: 108 windows, 54.6% ADLs
+    Subject 61:  76 windows, 55.3% ADLs
+    Subject 56: 126 windows, 44.4% ADLs
+    Subject 43:  75 windows, 44.0% ADLs
+    Subject 57: 140 windows, 56.4% ADLs
+
+acc_gyro_no_filter:
+  Top subjects by ADL ratio:
+    Subject 53:  44 windows, 50.0% ADLs
+    Subject 61:  32 windows, 50.0% ADLs
+    Subject 48:  81 windows, 48.1% ADLs
+    Subject 43:  57 windows, 52.6% ADLs
+    Subject 63:  86 windows, 46.5% ADLs
+    Subject 57:  98 windows, 45.9% ADLs
+    Subject 58:  56 windows, 44.6% ADLs
+    Subject 55:  85 windows, 41.2% ADLs
+    Subject 44: 186 windows, 59.7% ADLs
+    Subject 38:  60 windows, 60.0% ADLs
+
+acc_gyro_motion_filter:
+  Top subjects by ADL ratio:
+    Subject 53:  44 windows, 50.0% ADLs
+    Subject 61:  32 windows, 50.0% ADLs
+    Subject 48:  81 windows, 48.1% ADLs
+    Subject 43:  57 windows, 52.6% ADLs
+    Subject 63:  86 windows, 46.5% ADLs
+    Subject 57:  98 windows, 45.9% ADLs
+    Subject 58:  56 windows, 44.6% ADLs
+    Subject 55:  85 windows, 41.2% ADLs
+    Subject 44: 186 windows, 59.7% ADLs
+    Subject 38:  60 windows, 60.0% ADLs
+
+================================================================================
