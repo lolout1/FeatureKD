@@ -10,7 +10,7 @@ dataset: smartfallmm
 subjects: [29,30,31,32,34,35,36,37,38,39,43,44,45,46,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63]
 
 # Validation subjects (held out from training to prevent data leakage)
-validation_subjects: [62]
+validation_subjects: [56]
 
 model_args:
   num_layers: 2          # Keep shallow to prevent overfitting
@@ -24,7 +24,7 @@ model_args:
   acc_frames: 128        # Alias for backward compatibility
   mocap_frames: 128      # For compatibility with multimodal code
   num_heads: 2           # Small number of attention heads
-  dropout: 0.5           # High dropout for regularization
+  dropout: 0.6           # Increased dropout for better regularization (was 0.5)
 
 dataset_args:
   mode: 'sliding_window'
@@ -36,10 +36,11 @@ dataset_args:
   # Change the sensor to phone, watch, meta_wrist, or meta_hip for experiments
   sensors: ['watch']
   use_skeleton: False    # Disable skeleton usage for IMU-only experiments
-  # Filtering configuration
-  enable_filtering: True # Enable Butterworth low-pass filter
-  filter_cutoff: 5.5     # Cutoff frequency in Hz
-  filter_fs: 25          # Sampling rate in Hz
+  # Preprocessing configuration
+  enable_filtering: False    # Optional Butterworth low-pass filter
+  filter_cutoff: 5.5         # Cutoff frequency in Hz (used only when filtering enabled)
+  filter_fs: 25              # Sampling rate in Hz (used only when filtering enabled)
+  enable_normalization: False # Toggle per-window standardisation
 
 # Training configuration
 batch_size: 64
@@ -66,7 +67,7 @@ seed: 2
 # Optimizer configuration
 optimizer: adamw
 base_lr: 1e-3          # Learning rate
-weight_decay: 5e-4     # Slightly higher weight decay for regularization
+weight_decay: 1e-3     # Increased weight decay for better regularization (was 5e-4)
 
 # Notes:
 # - This configuration uses both accelerometer and gyroscope data
