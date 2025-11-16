@@ -1,6 +1,5 @@
 #!/bin/bash
-# Quick Start Script for Dual-Stream Architecture Comparison
-# Runs all 4 models (baseline + 3 dual-stream) with LOSO cross-validation on A100
+# Run the four-model LOSO comparison described in the study.
 
 set -e  # Exit on error
 set -o pipefail

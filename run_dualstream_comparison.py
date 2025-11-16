@@ -1,22 +1,4 @@
-"""
-LOSO Cross-Validation Comparison Script for Dual-Stream Architectures
-
-Runs all 3 dual-stream models sequentially with LOSO cross-validation:
-- Option 1: Shared-Weight Dual Stream (~15K params)
-- Option 2: Lightweight Independent Streams (~25K params)
-- Option 3: Asymmetric Dual Stream (~35K params)
-
-Each model is trained with Leave-One-Subject-Out (LOSO) cross-validation
-using all 30 young participants from the SmartFall dataset.
-
-Usage:
-    python run_dualstream_comparison.py --device 0
-
-Results are saved in:
-    - work_dir/dualstream_comparison_results/
-    - Each model gets its own subdirectory with full LOSO results
-    - Final comparison CSV and plots generated at the end
-"""
+"""Run LOSO comparison across the baseline and dual-stream IMU models."""
 
 import os
 import sys
@@ -62,7 +44,7 @@ def setup_argparser():
 
 
 def parse_bool(value):
-    """Parse boolean string values"""
+    """Parse boolean-like CLI inputs."""
     if isinstance(value, bool):
         return value
     if isinstance(value, str):
@@ -72,20 +54,7 @@ def parse_bool(value):
 
 def update_yaml_preprocessing(config_path, enable_normalization, enable_filtering,
                               filter_cutoff, filter_fs, output_path):
-    """
-    Update preprocessing settings in a YAML config file
-
-    Args:
-        config_path: Path to original YAML config
-        enable_normalization: Boolean for normalization
-        enable_filtering: Boolean for Butterworth filter
-        filter_cutoff: Filter cutoff frequency
-        filter_fs: Filter sampling rate
-        output_path: Path to save modified config
-
-    Returns:
-        Path to modified config file
-    """
+    """Write a copy of the YAML config with updated preprocessing flags."""
     # Load the YAML config
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
@@ -114,7 +83,7 @@ def update_yaml_preprocessing(config_path, enable_normalization, enable_filterin
 
 
 def get_models_to_run(args):
-    """Determine which models to run based on args"""
+    """Return list of models to execute based on CLI options."""
     if 'all' in args.models:
         models = ['baseline', 'shared', 'light', 'asymmetric']
     else:
@@ -127,19 +96,7 @@ def get_models_to_run(args):
 
 
 def run_model(config_path, work_dir, device, num_epochs, batch_size):
-    """
-    Run a single model with LOSO cross-validation using main.py
-
-    Args:
-        config_path: Path to the YAML config file
-        work_dir: Directory to save results
-        device: GPU device ID
-        num_epochs: Number of training epochs
-        batch_size: Batch size
-
-    Returns:
-        bool: True if successful, False otherwise
-    """
+    """Invoke main.py for a single configuration."""
     print(f"\n{'='*80}")
     print(f"Running: {config_path}")
     print(f"Work dir: {work_dir}")
@@ -166,7 +123,7 @@ def run_model(config_path, work_dir, device, num_epochs, batch_size):
 
 
 def load_results(work_dir, model_name):
-    """Load results from a completed model run"""
+    """Load metrics and training logs for one run."""
     scores_path = os.path.join(work_dir, 'scores.csv')
     training_log_path = os.path.join(work_dir, 'training_log.csv')
 
@@ -194,7 +151,7 @@ def load_results(work_dir, model_name):
 
 
 def create_comparison_plots(all_results, output_dir):
-    """Create comparison plots for all models"""
+    """Plot accuracy, F1, and per-subject comparisons."""
     os.makedirs(output_dir, exist_ok=True)
 
     # Combine all scores
@@ -279,7 +236,7 @@ def create_comparison_plots(all_results, output_dir):
 
 
 def create_summary_table(all_results, output_dir):
-    """Create summary comparison table"""
+    """Write LOSO averages to CSV and return the dataframe."""
     os.makedirs(output_dir, exist_ok=True)
     summary_data = []
 
@@ -322,10 +279,7 @@ def create_summary_table(all_results, output_dir):
 
 
 def create_per_subject_comparison(all_results, output_dir):
-    """
-    Create detailed per-subject comparison across all models.
-    Uses enhanced per_fold_detailed.csv files if available.
-    """
+    """Generate per-subject comparison tables from per-fold logs."""
     os.makedirs(output_dir, exist_ok=True)
 
     # Try to load per_fold_detailed.csv for each model
@@ -380,9 +334,7 @@ def create_per_subject_comparison(all_results, output_dir):
 
 
 def print_enhanced_summary(all_results, summary_df, comparison_df):
-    """
-    Print enhanced summary with per-fold statistics.
-    """
+    """Print averages and per-fold variance stats."""
     print("\n" + "="*100)
     print("ENHANCED RESULTS SUMMARY")
     print("="*100)
@@ -427,7 +379,7 @@ def print_enhanced_summary(all_results, summary_df, comparison_df):
 
 
 def save_model_info(all_results, output_dir):
-    """Save model architecture information"""
+    """Persist basic metadata about each model."""
     os.makedirs(output_dir, exist_ok=True)
     model_info = {
         'baseline': {

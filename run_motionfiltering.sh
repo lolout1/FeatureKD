@@ -1,24 +1,8 @@
 #!/bin/bash
-# Motion Filtering Ablation Study: Low-Pass Filter Impact
-# Scientific research-grade logging for publication
-#
-# Tests 4 models × 2 filtering conditions = 8 experiments
-# Models: TransModel, IMUTransformer, DualStream Optimal, Madgwick Fusion
-# Conditions: WITHOUT low-pass filtering, WITH low-pass filtering
-#
-# Low-pass parameters (research-based):
-#   - Accelerometer: 5.5 Hz cutoff (human motion < 5 Hz)
-#   - Gyroscope: 4.0 Hz cutoff (tighter for drift/noise)
-#   - 4th-order Butterworth filter (25 Hz sampling)
-#
-# Expected runtime: 16-24 hours on NVIDIA A100 (LOSO cross-validation)
+# Motion filtering ablation sweep (with and without low-pass filtering).
 
 set -e  # Exit on error
 set -o pipefail
-
-# ============================================================================
-# CONFIGURATION
-# ============================================================================
 
 DEVICE=0
 NUM_EPOCHS=80

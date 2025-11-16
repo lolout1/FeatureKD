@@ -1,6 +1,4 @@
-"""
-Quick script to analyze parameter counts and architectures of all models
-"""
+"""Summarize parameter counts for the IMU models."""
 
 import torch
 import sys
@@ -13,14 +11,14 @@ from Models.imu_dual_stream_asymmetric import DualStreamAsymmetricIMU
 
 
 def count_parameters(model):
-    """Count total and trainable parameters"""
+    """Return total and trainable parameter counts."""
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     return total_params, trainable_params
 
 
 def analyze_model_capacity(model, model_name):
-    """Analyze the model's capacity and architecture"""
+    """Print parameter counts and basic architecture info."""
     print(f"\n{'='*80}")
     print(f"{model_name}")
     print(f"{'='*80}")

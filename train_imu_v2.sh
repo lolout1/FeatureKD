@@ -1,18 +1,9 @@
 #!/bin/bash
 
-#######################################
-# Enhanced Training Script for IMU-based Fall Detection
-# Features:
-#   - Automated testing (no manual prompts)
-#   - Command-line argument control
-#   - Comprehensive error handling
-#   - Progress tracking and logging
-#   - Summary report generation
-#######################################
+# Enhanced trainer for the IMU student models.
 
-set -euo pipefail  # Exit on error, undefined variables, and pipe failures
+set -euo pipefail
 
-# Default configuration
 CONFIG_FILE="./config/smartfallmm/imu_student.yaml"
 AUTO_TEST=true
 DEVICE=0
@@ -21,17 +12,13 @@ SKIP_TRAIN=false
 WORK_DIR_SUFFIX=""
 LOG_FILE=""
 
-# Color codes for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
+NC='\033[0m'
 
-#######################################
-# Function: print_usage
-# Description: Display script usage information
-#######################################
 print_usage() {
     cat << EOF
 Usage: $0 [OPTIONS]
@@ -61,10 +48,6 @@ Examples:
 EOF
 }
 
-#######################################
-# Function: log_message
-# Description: Log messages with timestamps and colors
-#######################################
 log_message() {
     local level=$1
     shift
@@ -89,16 +72,11 @@ log_message() {
             ;;
     esac
 
-    # Also log to file if specified
     if [ -n "$LOG_FILE" ]; then
         echo "[${level}] ${timestamp} - ${message}" >> "$LOG_FILE"
     fi
 }
 
-#######################################
-# Function: validate_config
-# Description: Validate configuration file
-#######################################
 validate_config() {
     local config=$1
 
@@ -109,13 +87,11 @@ validate_config() {
         return 1
     fi
 
-    # Check if YAML is valid
     if ! python3 -c "import yaml,sys; yaml.safe_load(open('$config'))" 2>/dev/null; then
         log_message ERROR "Invalid YAML format in config file"
         return 1
     fi
 
-    # Validate required fields
     local required_fields=("model" "dataset" "model_args" "dataset_args")
     for field in "${required_fields[@]}"; do
         if ! python3 -c "import yaml,sys; config=yaml.safe_load(open('$config')); sys.exit(0 if '$field' in config else 1)" 2>/dev/null; then
@@ -128,10 +104,6 @@ validate_config() {
     return 0
 }
 
-#######################################
-# Function: extract_config_value
-# Description: Extract value from YAML config
-#######################################
 extract_config_value() {
     local config=$1
     local key=$2
@@ -140,10 +112,6 @@ extract_config_value() {
     python3 -c "import yaml,sys; config=yaml.safe_load(open('$config')); print(config.get('$key', '$default'))" 2>/dev/null || echo "$default"
 }
 
-#######################################
-# Function: print_header
-# Description: Print formatted section header
-#######################################
 print_header() {
     local title=$1
     local width=60
@@ -154,10 +122,6 @@ print_header() {
     echo "$(printf '=%.0s' $(seq 1 $width))"
 }
 
-#######################################
-# Function: train_model
-# Description: Execute training phase
-#######################################
 train_model() {
     local config=$1
     local work_dir=$2
@@ -172,7 +136,6 @@ train_model() {
     log_message INFO "Weight name: $weights"
     log_message INFO "Device: GPU $device"
 
-    # Run training
     local train_start=$(date +%s)
 
     if $VERBOSE; then
@@ -208,10 +171,6 @@ train_model() {
     fi
 }
 
-#######################################
-# Function: test_model
-# Description: Execute testing phase
-#######################################
 test_model() {
     local config=$1
     local work_dir=$2
@@ -222,14 +181,12 @@ test_model() {
 
     log_message INFO "Starting testing process..."
 
-    # Check if weights exist
     if [ ! -d "$work_dir" ]; then
         log_message ERROR "Work directory not found: $work_dir"
         log_message ERROR "Please train the model first or specify correct work directory"
         return 1
     fi
 
-    # Run testing
     local test_start=$(date +%s)
 
     if $VERBOSE; then
@@ -263,10 +220,6 @@ test_model() {
     fi
 }
 
-#######################################
-# Function: generate_summary
-# Description: Generate experiment summary report
-#######################################
 generate_summary() {
     local work_dir=$1
     local sensor=$2
@@ -282,7 +235,6 @@ generate_summary() {
     echo "  - Work Directory: $work_dir"
     echo ""
 
-    # Check if results exist
     if [ -f "$work_dir/scores.csv" ]; then
         log_message INFO "Performance Results:"
         echo ""
@@ -325,11 +277,6 @@ EOF
     echo ""
 }
 
-#######################################
-# Main Script
-#######################################
-
-# Parse command-line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
         -c|--config)
@@ -368,7 +315,6 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Script start
 SCRIPT_START=$(date +%s)
 print_header "IMU FALL DETECTION - TRAINING PIPELINE"
 
@@ -378,16 +324,13 @@ log_message INFO "Auto-test: $AUTO_TEST"
 log_message INFO "Device: GPU $DEVICE"
 log_message INFO "Skip training: $SKIP_TRAIN"
 
-# Validate configuration
 if ! validate_config "$CONFIG_FILE"; then
     log_message ERROR "Configuration validation failed"
     exit 1
 fi
 
-# Extract sensor value from config
 SENSOR=$(python3 -c "import yaml,sys; config=yaml.safe_load(open('$CONFIG_FILE')); print(config.get('dataset_args', {}).get('sensors', ['watch'])[0])" 2>/dev/null || echo "watch")
 
-# Setup directories and files
 WEIGHTS="imu_student_best"
 if [ -n "$WORK_DIR_SUFFIX" ]; then
     WORK_DIR="exps/smartfall_imu/student/${SENSOR}_acc_gyro_6ch_young_${WORK_DIR_SUFFIX}"
@@ -395,7 +338,6 @@ else
     WORK_DIR="exps/smartfall_imu/student/${SENSOR}_acc_gyro_6ch_young"
 fi
 
-# Create log file
 mkdir -p "$(dirname "$WORK_DIR")"
 LOG_FILE="${WORK_DIR}_$(date '+%Y%m%d_%H%M%S').log"
 
@@ -403,7 +345,6 @@ log_message INFO "Sensor: $SENSOR"
 log_message INFO "Modalities: Accelerometer + Gyroscope (6-channel IMU)"
 log_message INFO "Log file: $LOG_FILE"
 
-# Training phase
 if ! $SKIP_TRAIN; then
     if ! train_model "$CONFIG_FILE" "$WORK_DIR" "$WEIGHTS" "$DEVICE"; then
         log_message ERROR "Pipeline failed during training"
@@ -413,7 +354,6 @@ else
     log_message WARNING "Skipping training phase (--skip-train enabled)"
 fi
 
-# Testing phase
 if [ "$AUTO_TEST" = "true" ] || $SKIP_TRAIN; then
     if ! test_model "$CONFIG_FILE" "$WORK_DIR" "$WEIGHTS" "$DEVICE"; then
         log_message ERROR "Pipeline failed during testing"
@@ -423,10 +363,8 @@ else
     log_message INFO "Skipping testing phase (--auto-test=false)"
 fi
 
-# Generate summary
 generate_summary "$WORK_DIR" "$SENSOR"
 
-# Script end
 SCRIPT_END=$(date +%s)
 TOTAL_DURATION=$((SCRIPT_END - SCRIPT_START))
 

@@ -1,9 +1,6 @@
 #!/bin/bash
 
-################################################################################
-# Quick Test Script
-# Runs a fast test to verify everything works correctly
-################################################################################
+# Quick sanity check for the dual-stream tooling.
 
 set -e
 

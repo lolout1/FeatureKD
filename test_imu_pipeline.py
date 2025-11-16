@@ -1,7 +1,4 @@
-"""
-Test script to verify IMU data loading pipeline
-Tests accelerometer + gyroscope data loading, alignment, and model compatibility
-"""
+"""Smoke tests for the IMU data loading and model pipeline."""
 
 import os
 import sys

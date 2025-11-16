@@ -1,11 +1,4 @@
-"""
-Standalone Results Analyzer for Dual-Stream Model Comparison
-
-Use this script to analyze and visualize results from completed model runs.
-
-Usage:
-    python analyze_dualstream_results.py --work-dir work_dir/dualstream_comparison_TIMESTAMP
-"""
+"""Analyze and visualize results from dual-stream comparison runs."""
 
 import os
 import argparse
@@ -28,7 +21,7 @@ def setup_argparser():
 
 
 def load_model_results(work_dir, model_name):
-    """Load results for a single model"""
+    """Load metrics and logs for one model."""
     model_dir = os.path.join(work_dir, model_name)
 
     if not os.path.exists(model_dir):
@@ -58,7 +51,7 @@ def load_model_results(work_dir, model_name):
 
 
 def print_detailed_statistics(all_results):
-    """Print detailed statistical comparison"""
+    """Print summary statistics for each metric."""
     print("\n" + "="*100)
     print("DETAILED STATISTICAL COMPARISON")
     print("="*100 + "\n")
@@ -102,7 +95,7 @@ def print_detailed_statistics(all_results):
 
 
 def plot_training_curves(all_results, output_dir):
-    """Plot training curves for all models"""
+    """Plot loss and accuracy curves for each phase."""
     print("Generating training curve plots...")
 
     # For each metric, plot all models together
@@ -147,7 +140,7 @@ def plot_training_curves(all_results, output_dir):
 
 
 def create_parameter_efficiency_plot(all_results, output_dir):
-    """Plot accuracy vs model parameters"""
+    """Plot parameter count against accuracy and F1."""
     print("Creating parameter efficiency plot...")
 
     # Model parameter counts (approximate)
@@ -209,7 +202,7 @@ def create_parameter_efficiency_plot(all_results, output_dir):
 
 
 def identify_best_model(all_results):
-    """Identify best model for each metric"""
+    """Report the best-performing model per metric."""
     print("\n" + "="*100)
     print("BEST MODEL FOR EACH METRIC")
     print("="*100 + "\n")

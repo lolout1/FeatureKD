@@ -1,15 +1,5 @@
 #!/bin/bash
-# Filtering and Quality Assessment Experiments
-# Tests 7 configurations: baseline + motion filtering + 5 filtering/fusion approaches
-#
-# Configurations tested:
-#   1. Baseline: TransModel (acc-only, 4ch, no filtering)
-#   2. TransModel + Motion Filter (4ch with Android app logic, TransModel architecture)
-#   3. IMU Acc-only + Motion Filter (4ch with Android app logic, IMUTransformer)
-#   4. IMU Raw Acc+Gyro (6ch, no quality filter)
-#   5. IMU Acc+Gyro + Hard Quality Filter (6ch, SNR threshold)
-#   6. IMU Acc+Gyro + Adaptive Fallback (6ch→4ch based on quality)
-#   7. IMU Acc+Orientation + Madgwick Fusion (7ch)
+# Run the filtering and quality comparison sweep described in the paper.
 
 set -e  # Exit on error
 set -o pipefail

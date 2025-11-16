@@ -1,21 +1,5 @@
 #!/bin/bash
-# Motion Filtering Model Comparison
-# Tests 4 models with motion filtering, low-pass filtering, and class-aware stride
-#
-# Models tested:
-#   1. TransModel (Baseline) - acc-only, 4ch, motion filtered
-#   2. IMUTransformer - acc-only, 4ch, motion filtered
-#   3. Dual Stream Fusion - acc+gyro, 4ch each, separate encoders
-#   4. Madgwick Fusion - acc+gyro → orientation, 7ch
-#
-# Optimizations applied:
-#   - Low-pass filtering (5.5Hz cutoff) to reduce noise-based false positives
-#   - Class-aware stride (stride=10 for ADLs, stride=32 for falls) to balance dataset
-#   - Validation subjects with 40-50% ADLs for realistic ADL detection evaluation
-#   - DTW alignment for acc+gyro models (acc as ground truth)
-#   - Strong regularization to prevent overfitting on ~1000 samples
-#
-# Expected runtime: 8-12 hours on NVIDIA A100
+# Compare the motion-filtering variants enumerated in the study.
 
 set -e  # Exit on error
 set -o pipefail

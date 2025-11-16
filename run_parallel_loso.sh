@@ -9,15 +9,7 @@
 #SBATCH --mem=32G
 #SBATCH --time=02:00:00
 
-# Parallel LOSO (Leave-One-Subject-Out) Training
-# Uses SLURM array jobs to run multiple folds in parallel
-# Each array task handles one test subject (one fold)
-#
-# Usage: sbatch run_parallel_loso.sh <config_file>
-# Example: sbatch run_parallel_loso.sh config/smartfallmm/imu_8channel.yaml
-#
-# The %4 in --array means max 4 jobs running simultaneously
-# Adjust based on available GPUs (if you have 4 GPUs, use %4)
+# SLURM array wrapper for LOSO training; each task owns one fold.
 
 set -e
 

@@ -1,27 +1,6 @@
 #!/bin/bash
 
-################################################################################
-# Model Comparison Script
-# Compares Accelerometer-only vs Full IMU (Acc+Gyro+SMV) Transformers
-#
-# This script ensures:
-# - No data leakage (same train/val/test splits)
-# - Reproducible results (fixed seeds)
-# - Fair comparison (identical hyperparameters)
-# - Comprehensive evaluation and reporting
-#
-# Usage:
-#   bash run_comparison.sh [OPTIONS]
-#
-# Options:
-#   --seed SEED           Random seed (default: 42)
-#   --device DEVICE       Device (cuda or cpu, default: cuda if available)
-#   --epochs EPOCHS       Number of epochs (default: from config)
-#   --output_dir DIR      Output directory (default: auto-generated)
-#   --test_only           Skip training, only test
-#   --multi_seed          Run with multiple seeds
-#   --help                Show this help message
-################################################################################
+# Compare accelerometer-only and full IMU models under shared configs.
 
 set -e  # Exit on error
 
